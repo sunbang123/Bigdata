@@ -1,0 +1,60 @@
+SELECT TABLE_NAME FROM USER_TABLES;
+--단순검색?
+DESC STUDENT;
+DESC ENROL;
+DESC SUBJECT;
+
+--테이블내의 모든 정보를 검색하는 것?
+SELECT * FROM STUDENT;
+--특정열의 검색은?
+SELECT STU_NO,STU_NAME FROM STUDENT;
+--중복행제거?
+SELECT STU_DEPT FROM STUDENT;
+
+SELECT DISTINCT STU_DEPT FROM STUDENT;
+SELECT DISTINCT STU_GRADE,STU_CLASS
+FROM STUDENT;
+
+--수식을 포함한 검색문?
+SELECT * FROM ENROL;
+SELECT STU_NO,SUB_NO,ENR_GRADE,ENR_GRADE+10
+FROM ENROL;
+
+--결과열에 별칭(ALIAS)부여하기?
+--학생테이블에서 학번을 ID,STU_NAME을 NAME로 나타내라
+SELECT STU_NO ID,STU_NAME NAME
+FROM STUDENT;
+
+--연결연산자?
+--학생테이블에서 학번과 학생이름을 학번성명으로 출력하라?
+SELECT STU_NO || STU_NAME AS 학번성명
+FROM STUDENT;
+
+--조건검색?
+--학과이름이 컴퓨터정보과의 학생이름 학과이름 학년과 반을 출력하라?
+SELECT STU_NAME,STU_DEPT,STU_GRADE,STU_CLASS
+FROM STUDENT
+WHERE STU_DEPT='컴퓨터정보' OR STU_GRADE=2;
+
+--범위조건?
+--학생테이블에서 몸무게가 60~70인 학생들의 정보를 검색하라?
+SELECT *
+FROM STUDENT
+WHERE STU_WEIGHT BETWEEN 60 AND 70;
+
+--범위조건으로 2014학번의 학생들을 검색하라?
+SELECT *
+FROM STUDENT
+WHERE STU_NO BETWEEN 20140000 AND 20149999;
+
+--LIKE를 이용한 검색?
+--이것은 와일드카드 문자와 함께 사용함.
+--김씨성을 가진 학생들의 정보를 출력하라?
+SELECT *
+FROM STUDENT
+WHERE STU_NAME LIKE '김%'; --widcard
+--와일드 카드문자인 '_'는 자리수를 의미함.
+--학생이름중 두번째가 수인 학생을 검색하라?
+SELECT *
+FROM STUDENT
+WHERE STU_NAME LIKE '_수%';-- 두번째가 '수'인
