@@ -8,3 +8,9 @@ CREATE USER (사용 예정 임의 ID) IDENTIFED BY (임의 비밀번호);
 
 * 권한 부여
 GRANT RESOURCE,CONNECT DBA (위에서 부여한  ID);
+
+# view table 만들기
+
+SQLPLUS SYSTEM/123456
+
+SQL> GRANT CREATE VIEW TO SCOTT;
